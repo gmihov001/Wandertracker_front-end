@@ -11,7 +11,8 @@ export const MainGate = () => (
 		<Navbar />
 		<div className="container">
 			<div className="row">
-				<div className="map-landing  img-fluid mt-5 mb-0">
+				<div className="text-center">The Essential Travel Toolkit</div>
+				<div className="map-landing img-fluid mt-5 mb-0">
 					<img id="worldMap" src={Map_Landing} />
 				</div>
 

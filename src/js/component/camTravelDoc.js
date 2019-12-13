@@ -39,7 +39,6 @@ export class camTravelDoc extends React.Component {
 			error => console.log(error),
 			() => {
 				uploader.snapshot.ref.getDownloadURL().then(url => {
-					console.log(url);
 					this.setState({ traveldoc: { ...this.state.traveldoc, photo: url } });
 				});
 			}
@@ -47,7 +46,6 @@ export class camTravelDoc extends React.Component {
 	};
 
 	onChange = e => {
-		console.dir(e.target);
 		let str = e.target.options[e.target.selectedIndex].innerHTML;
 		let split = str.split(" ");
 

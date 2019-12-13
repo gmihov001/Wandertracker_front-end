@@ -257,7 +257,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// },
 
 			addDoc: object => {
-				console.log("addDoc:" + object);
 				fetch("https://3000-c365cd7d-ea0e-4445-a2c0-0130685ce181.ws-us02.gitpod.io/documents", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -265,7 +264,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(data => {
-						console.log(data);
 						fetch("https://3000-c365cd7d-ea0e-4445-a2c0-0130685ce181.ws-us02.gitpod.io/users")
 							.then(response => response.json())
 							.then(data => {
@@ -391,17 +389,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			changeColor: (index, color) => {
-				//get the store
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
-
-				//reset the global store
 				setStore({ demo: demo });
 			}
 		}

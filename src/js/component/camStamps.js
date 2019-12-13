@@ -28,7 +28,6 @@ export class camStamps extends React.Component {
 	};
 
 	onChange = e => {
-		console.dir(e.target);
 		let str = e.target.options[e.target.selectedIndex].innerHTML;
 		let split = str.split(" ");
 

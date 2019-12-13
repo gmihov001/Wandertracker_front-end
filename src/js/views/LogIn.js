@@ -19,8 +19,6 @@ export class LogIn extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		console.log("The form was submitted");
-		console.log(this.state);
 	};
 
 	handleChange = e => {

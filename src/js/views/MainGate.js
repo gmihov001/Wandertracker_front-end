@@ -11,13 +11,11 @@ export const MainGate = () => (
 		<Navbar />
 		<div className="container">
 			<div className="row">
-				<div className="text-center">The Essential Travel Toolkit</div>
-				<div className="map-landing img-fluid mt-5 mb-0">
+				<div className="map-landing img-fluid mt-3 mb-n3">
 					<img id="worldMap" src={Map_Landing} />
 				</div>
-
-				<div className="main-landing text-white mx-auto shadow mx-5  ">
-					<h2 className="text-center p-2 h3 font-weight-light">Plan Travel | Save Memories</h2>
+				<div className="main-landing text-white mx-auto shadow mx-5 mt-0">
+					<h2 className="text-center p-2 font-weight-light">Plan Travel | Save Memories</h2>
 				</div>
 
 				<div className="d-flex justify-content-between m-1 text-secondary mx-auto mb-5">

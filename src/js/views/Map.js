@@ -20,7 +20,6 @@ export class Map extends React.Component {
 	}
 
 	onChange = e => {
-		console.dir(e.target);
 		this.setState({
 			country: {
 				label: e.target.options[e.target.selectedIndex].innerHTML,
@@ -30,7 +29,6 @@ export class Map extends React.Component {
 	};
 
 	render() {
-		console.log();
 		return (
 			<Context.Consumer>
 				{({ store, actions }) => (

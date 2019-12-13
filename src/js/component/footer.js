@@ -13,9 +13,6 @@ export const Footer = () => (
 					<br />
 					email@wandertracker.com
 					<br />
-					Made with <i className="fa fa-heart text-danger" /> by Georgi and Fernando
-					<br />
-					Graphic Design by Sharon Elman
 				</p>
 				<a href="#" target="_blank">
 					<i className="fab fa-facebook-square" />

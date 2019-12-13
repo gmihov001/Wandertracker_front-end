@@ -13,7 +13,7 @@ export const Footer = () => (
 					<br />
 					email@wandertracker.com
 					<br />
-                    Created by George Mihov
+					Created by George Mihov
 				</p>
 				<a href="#" target="_blank">
 					<i className="fab fa-facebook-square" />

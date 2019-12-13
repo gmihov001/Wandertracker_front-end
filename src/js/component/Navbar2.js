@@ -30,7 +30,7 @@ export const Navbar2 = () => {
 						<Link to="/Stamps">
 							<img
 								className="iconbtn icons-navbar navbar-brand mb-0 h1"
-								title="Go  to Stamps"
+								title="Go to Stamps"
 								src={StampsIcon}
 							/>
 						</Link>

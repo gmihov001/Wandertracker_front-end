@@ -2,10 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar2 } from "../component/Navbar2";
 import CamIcon from "../../img/Image.png";
-import wtLogo from "../../img/wanderTrackerLogo.png";
 import passport from "../../img/passport.jpg";
-import UserIcon from "../../img/user-03.png";
-import camTravelDoc from "../component/camTravelDoc";
 
 export class AddTravelDoc extends React.Component {
 	constructor(props) {

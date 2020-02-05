@@ -1,7 +1,11 @@
 {
 	"name": "react-hello-webapp",
 	"version": "1.0.1",
-	"description": "",
+	"description": "", 
+    "engines": {
+        "node": "10.18.0",
+        "npm": "6.13.0"
+    },  
 	"main": "index.js",
 	"scripts": {
 		"c9": "webpack-dev-server --config webpack.dev.js --host $IP --port $PORT",

@@ -16,11 +16,11 @@ export class TripDetails extends React.Component {
 	render() {
 		return (
 			<div className="wrapper">
+				<Navbar2 />
 				<Context.Consumer>
 					{({ store }) => {
 						return (
 							<>
-								<Navbar2 />
 								<div className="container pb-5">
 									{store.trips.map((thisTrip, index) => {
 										if (`${thisTrip.id}` === this.props.match.params.id) {

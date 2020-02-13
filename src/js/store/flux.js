@@ -1,4 +1,4 @@
-const getState = ({ getStore, getActions, setStore }) => {
+const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
 			users: [],
@@ -147,23 +147,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			login: (usename, pw) => {},
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
+			// Authentication disabled for easy access to app
 
 			editTrip: (tripID, object) => {
 				const store = getStore();
 				let change = [];
 				change = store.trips.map(item => {
 					if (item.id == tripID) {
-						//let updatedTrip = Object.assign(item, object);
 						return { ...item, ...object };
 					} else {
 						return item;

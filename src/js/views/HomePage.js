@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar2 } from "../component/Navbar2";
-import wtLogo from "../../img/wanderTrackerLogo.png";
 import { Context } from "../store/appContext.js";
 
 export class HomePage extends React.Component {

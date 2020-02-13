@@ -1,15 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { MainGate } from "./views/MainGate";
 import { SignUp } from "./views/SignUp";
 import { LogIn } from "./views/LogIn";
 import { HomePage } from "./views/HomePage";
 import { Stamps } from "./views/Stamps";
-import { AddStamp } from "./views/AddStamp";
 import { TravelDoc } from "./views/TravelDoc";
-import { AddTravelDoc } from "./views/AddTravelDoc";
 import { Map } from "./views/Map";
 import { TripPlanner } from "./views/TripPlanner";
 import { AddTrip } from "./views/AddTrip";
@@ -35,9 +32,7 @@ export const Layout = () => {
 						<Route path="/SignUp" component={SignUp} />
 						<Route path="/HomePage" component={HomePage} />
 						<Route path="/Stamps" component={Stamps} />
-						<Route path="/AddStamp" component={AddStamp} />
 						<Route path="/TravelDoc" component={TravelDoc} />
-						<Route path="/AddTravelDoc" component={AddTravelDoc} />
 						<Route path="/Map" component={Map} />
 						<Route path="/TripPlanner" component={TripPlanner} />
 						<Route path="/AddTrip" component={AddTrip} />

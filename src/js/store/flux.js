@@ -20,14 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					id: "232",
 					photo: "Document image",
-					country_label: "Bulgaria",
-					country_value: "bg"
-				},
-				{
-					id: "565",
-					photo: "Document image",
-					country_label: "Honduras",
-					country_value: "hn"
+					label: "Bulgaria",
+					value: "bg"
 				}
 			],
 			stamps: [
@@ -273,15 +267,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return true;
 			},
 
-			/* removeDoc: id => {
+			removeDoc: id => {
 				const store = getStore();
 				const change = store.traveldocs.filter(item => {
 					return item.id != id;
 				});
 				setStore({ traveldocs: change });
-            },*/
+			},
 
-			removeDoc: id => {
+			/* removeDoc: id => {
 				const store = getStore();
 				fetch("https://3000-c365cd7d-ea0e-4445-a2c0-0130685ce181.ws-us02.gitpod.io/user/1/document/" + id, {
 					method: "DELETE"
@@ -294,12 +288,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								setStore({ users: data });
 							});
 					});
-
-				/*const change = store.traveldocs.filter(item => {
-					return item.id != id;
-				});
-				setStore({ traveldocs: change });*/
-			},
+            }, */
 
 			addContact: (tripID, newContact) => {
 				const store = getStore();

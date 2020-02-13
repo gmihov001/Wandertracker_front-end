@@ -307,9 +307,14 @@ hr {
   
 }
 
-.stamp-prev{
+.img-prev {
     height: 6rem;
     width: 6rem;
+}
+
+.img-prev:hover {
+    box-shadow: 1px 2px 10px gray;
+    border-radius: 5px;
 }
 
 .country-name{

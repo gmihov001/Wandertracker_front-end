@@ -2,11 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar2 } from "../component/Navbar2";
 import StampPic from "../../img/stamp.jpg";
-import wtLogo from "../../img/wanderTrackerLogo.png";
-import UserIcon from "../../img/user-03.png";
-import AddIcon from "../../img/addbutton.png";
 import CamIcon from "../../img/Image.png";
-import countries from "../constants/countries";
 import { Context } from "../store/appContext.js";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
@@ -54,18 +50,18 @@ export class Stamps extends React.Component {
 						<Context.Consumer>
 							{({ store, actions }) => {
 								return (
-									<div className="container d-block">
+									<div className="col-12 d-block">
 										{store.stamps.map((item, index) => (
 											<div
 												key={index}
-												className="row py-2 my-4 mx-1 d-sm-block d-md-flex justify-content-between bg-white shadow">
+												className="row #61 py-2 my-4 mx-1 d-sm-block d-md-flex justify-content-between bg-white shadow">
 												<div className="col-xs-4 col-sm-2 col-md-2 pageEntry ml-3 px-2 h-1 mt-4">
 													<h4 className="align-middle center-block">{item.label}</h4>
 												</div>
-												<div className="col-sm-3 col-md-4 text-center">
+												<div className="col-sm-3 #65 col-md-4 text-center">
 													<img
 														onClick={() => this.setState({ isOpen: true })}
-														className="stamp-prev navbar-brand mb-0 img-fluid"
+														className="img-prev navbar-brand mb-0 img-fluid"
 														onError={this.addDefaultSrc}
 														src={StampPic}
 													/>
@@ -77,7 +73,7 @@ export class Stamps extends React.Component {
 														/>
 													)}
 												</div>
-												<div className="col-sm-3 col-md-2 text-center">
+												<div className="col-sm-3 #80 col-md-2 text-center">
 													<img
 														className="stamp-prev navbar-brand flag img-fluid"
 														onError={this.addDefaultSrc}

@@ -6,7 +6,6 @@ import DocIcon from "../../img/Documents.png";
 import StampsIcon from "../../img/Stamps.png";
 import MapIcon from "../../img/MapLocation.png";
 import UserIcon from "../../img/user-03.png";
-import PropTypes from "prop-types"; //on top of the page
 
 export const Navbar2 = () => {
 	return (

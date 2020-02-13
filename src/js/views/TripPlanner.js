@@ -6,7 +6,7 @@ import UserIcon from "../../img/user-03.png";
 import AddIcon from "../../img/addbutton.png";
 import { Context } from "../store/appContext.js";
 
-export const TripPlanner = props => (
+export const TripPlanner = () => (
 	<div className="wrapper">
 		<Navbar2 />
 		<Context.Consumer>

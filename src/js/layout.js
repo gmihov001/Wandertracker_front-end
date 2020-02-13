@@ -14,8 +14,6 @@ import { TripDetails } from "./views/TripDetails";
 import { EmergContacts } from "./views/EmergContacts";
 import { camTravelDoc } from "./component/camTravelDoc";
 import { camStamps } from "./component/camStamps";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext.js";
 import { Footer } from "./component/footer";
 
@@ -40,8 +38,6 @@ export const Layout = () => {
 						<Route path="/EmergContacts" component={EmergContacts} />
 						<Route path="/camTravelDoc" component={camTravelDoc} />
 						<Route path="/camStamps" component={camStamps} />
-						<Route path="/demo" component={Demo} />
-						<Route path="/single/:theid" component={Single} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					<Footer />

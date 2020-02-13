@@ -1,10 +1,10 @@
 import React from "react";
-import { Context } from "../store/appContext.js";
 import { Navbar2 } from "../component/Navbar2";
 import PropTypes from "prop-types";
 import { TripContacts } from "../component/tripContacts.js";
 import { TripPlaces } from "../component/tripPlaces.js";
 import { TripItinerary } from "../component/tripItinerary.js";
+import { Context } from "../store/appContext.js";
 
 export class TripDetails extends React.Component {
 	constructor(props) {

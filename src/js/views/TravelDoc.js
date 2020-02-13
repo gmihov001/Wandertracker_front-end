@@ -25,7 +25,7 @@ export class TravelDoc extends React.Component {
 	render() {
 		const { isOpen } = this.state;
 		return (
-			<div className="wrapper ">
+			<div className="wrapper">
 				<Navbar2 />
 				<div className="container">
 					<div className="row #31 my-4 d-flex justify-content-center">

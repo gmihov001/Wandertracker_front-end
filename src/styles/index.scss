@@ -49,14 +49,14 @@
     background: linear-gradient(rgb(0, 255, 115),rgb(12, 160, 37));
     border-radius: 15px;
     text-decoration: none;
-    box-shadow: 1px 3px 5px gray, inset 2px 3px 3px rgb(255, 255, 255);
+    box-shadow: 2px 3px 5px gray, inset 2px 3px 3px rgb(255, 255, 255);
 }
 
 .xlButton:active {
     background-color: gray;
     background: linear-gradient(gray, lightgray);
     color: white;
-    box-shadow: 1px 3px 5px gray, inset 2px 3px 3px rgba(255, 255, 255, 0.808);
+    box-shadow: 2px 3px 5px gray, inset 2px 3px 3px rgba(255, 255, 255, 0.808);
 }
 
 .flag {
@@ -101,8 +101,10 @@ a:hover {
 
 a > .pageTitle:hover {
     background-color: #fe5000;
-    color: white;  
-    font-size: 1.1em;  
+    color: white;
+    background: linear-gradient(#fe5000, orange);
+    box-shadow: 2px 3px 5px gray, inset 2px 3px 3px rgb(255, 255, 255);
+
 }
 
 .underTitle {

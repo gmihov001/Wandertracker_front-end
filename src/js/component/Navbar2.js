@@ -24,54 +24,38 @@ export const Navbar2 = () => {
 				<span className="navbar-toggler-icon"></span>
 			</button>
 			<div className="collapse navbar-collapse" id="navbarSupportedContent">
-				<section className="container s2 navbar-nav mr-0  text-center">
-					<div className="navicon-cont p-1 pl-5 flex-fill bd-highlight">
+				<section className="d-flex justify-content-between s2 navbar-nav mr-0 text-center">
+					<div className="p-1">
 						<Link to="/Stamps">
-							<img
-								className="iconbtn icons-navbar navbar-brand mb-0 h1"
-								title="Go to Stamps"
-								src={StampsIcon}
-							/>
+							<img className="iconbtn icons-navbar mb-0 h1" title="Go to Stamps" src={StampsIcon} />
 						</Link>
 					</div>
 
-					<div className="p-1 pl-5 flex-fill bd-highlight ">
+					<div className="p-1">
 						<Link to="/TravelDoc">
 							<img
-								className="iconbtn icons-navbar navbar-brand mb-0 h1"
+								className="iconbtn icons-navbar mb-0 h1"
 								title="Go To Travel Documents"
 								src={DocIcon}
 							/>
 						</Link>
 					</div>
 
-					<div className="p-1 pl-5 flex-fill bd-highlight ">
+					<div className="p-1">
 						<Link to="/Map">
-							<img
-								className="iconbtn icons-navbar navbar-brand mb-0 h1"
-								title="Go To Maps"
-								src={MapIcon}
-							/>
+							<img className="iconbtn icons-navbar mb-0 h1" title="Go To Maps" src={MapIcon} />
 						</Link>
 					</div>
 
-					<div className="p-1 pl-5 flex-fill bd-highlight ">
+					<div className="p-1">
 						<Link to="/TripPlanner">
-							<img
-								className="iconbtn icons-navbar navbar-brand mb-0 h1 "
-								title="Go To Travel Planner"
-								src={CalIcon}
-							/>
+							<img className="iconbtn icons-navbar mb-0 h1 " title="Go To Travel Planner" src={CalIcon} />
 						</Link>
 					</div>
 
-					<div className="p-2 pl-5 flex-fill bd-highlight ">
+					<div className="p-1">
 						<Link to="/HomePage">
-							<img
-								className="iconbtn icons-navbar navbar-brand mb-0 h1"
-								title="Go To Profile"
-								src={UserIcon}
-							/>
+							<img className="iconbtn icons-navbar mb-0 h1" title="Go To Profile" src={UserIcon} />
 						</Link>
 					</div>
 				</section>

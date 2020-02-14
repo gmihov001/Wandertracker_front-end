@@ -26,7 +26,7 @@ export class TripDetails extends React.Component {
 												<div className="row py-2 my-3 d-flex justify-content-between">
 													<div className="col-md-4 p-2 text-right align-middle">
 														<Link to="/TripPlanner" title="Back to Trips">
-															<span className="pageTitle h3 my-1 text-center px-3">
+															<span className="pageTitle h3 my-1 text-center px-4">
 																&laquo;
 															</span>
 														</Link>

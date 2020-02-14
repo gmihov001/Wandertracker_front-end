@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar2 } from "../component/Navbar2";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { TripContacts } from "../component/tripContacts.js";
 import { TripPlaces } from "../component/tripPlaces.js";
@@ -14,22 +14,29 @@ export class TripDetails extends React.Component {
 
 	render() {
 		return (
-			<div className="wrapper #navbar-moved">
-				<Navbar2 />
+			<div className="wrapper">
 				<Context.Consumer>
 					{({ store }) => {
 						return (
-							<div className="container pb-5">
+							<div className="container addWindow bg-white shadow-lg py-4 my-5">
 								{store.trips.map((thisTrip, index) => {
 									if (`${thisTrip.id}` === this.props.match.params.id) {
 										return (
-											<div key={index}>
-												<div className="row py-2 my-4 d-flex justify-content-center">
-													<div className="col-md-4 text-center">
-														<h1 className="pageTitle text-center px-1">
-															{thisTrip.name} {thisTrip.year}
-														</h1>
+											<div className="my-3" key={index}>
+												<div className="row py-2 my-3 d-flex justify-content-between">
+													<div className="col-md-4 p-2 text-right align-middle">
+														<Link to="/TripPlanner" title="Back to Trips">
+															<span className="pageTitle h3 my-1 text-center px-3">
+																&laquo;
+															</span>
+														</Link>
 													</div>
+													<div className="col-md-4 px-1 text-center">
+														<h2 className="pageTitle text-center">
+															{thisTrip.name} {thisTrip.year}
+														</h2>
+													</div>
+													<div className="col-md-4 text-center"></div>
 												</div>
 
 												<div className="row py-3 mx-1 d-sm-block d-md-flex mx-1 my-2 bg-white shadow">

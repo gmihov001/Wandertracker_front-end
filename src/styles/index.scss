@@ -92,12 +92,17 @@ a:hover {
 .pageTitle {
     color: #fe5000;
     background-color: rgb(246, 246, 246);
-    font-size: 2em;
     padding-top: 5px;
     padding-bottom: 8px;
     text-shadow: 0px 1px 4px rgb(150,150,150);
     border-radius: 10px;
     box-shadow: inset 2px 2px 2px rgb(255, 255, 255), inset -2px -2px 6px rgb(180, 180, 180);
+}
+
+a > .pageTitle:hover {
+    background-color: #fe5000;
+    color: white;  
+    font-size: 1.1em;  
 }
 
 .underTitle {
@@ -448,6 +453,11 @@ input[type=text]:hover::placeholder, input[type=text]:focus::placeholder, input[
 }
 
 h1, h2, h3, h4, h5, h6, input {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, .input {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
 }

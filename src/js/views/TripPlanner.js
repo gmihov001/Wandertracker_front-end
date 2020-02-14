@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar2 } from "../component/Navbar2";
-import wtLogo from "../../img/wanderTrackerLogo.png";
-import UserIcon from "../../img/user-03.png";
 import AddIcon from "../../img/addbutton.png";
 import { Context } from "../store/appContext.js";
 
@@ -14,13 +12,13 @@ export const TripPlanner = () => (
 				<div className="container">
 					<div className="row my-4 d-flex justify-content-center">
 						<div className="col-md-4 text-center">
-							<h1 className="pageTitle text-center py-2 px-3">Trip Planner</h1>
+							<h2 className="pageTitle text-center py-2 px-3">Trip Planner</h2>
 						</div>
 					</div>
 
-					<div className="row mt-4 mb-0 pl-0 d-flex flex-row">
-						<div className="col-md-4 text-left pl-2">
-							<h1 className="underTitle text-left pl-1 pt-2">Trips</h1>
+					<div className="row mt-4 mb-0 d-flex flex-row">
+						<div className="col-md-4 ml-1 text-center">
+							<h1 className="underTitle text-left pl-1 pt-2 pr-4">Trips</h1>
 						</div>
 					</div>
 

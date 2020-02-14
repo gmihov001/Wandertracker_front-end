@@ -30,7 +30,7 @@ export class TravelDoc extends React.Component {
 				<div className="container">
 					<div className="row #31 my-4 d-flex justify-content-center">
 						<div className="col-md-4 text-center">
-							<h1 className="pageTitle text-center py-2 px-3">Travel Documents</h1>
+							<h2 className="pageTitle text-center py-2 px-3">Travel Documents</h2>
 						</div>
 					</div>
 					<div className="row #36 my-3 d-flex justify-content-center">

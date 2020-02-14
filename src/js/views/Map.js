@@ -37,7 +37,7 @@ export class Map extends React.Component {
 						<div className="container">
 							<div className="row mt-4 mb-0 d-flex justify-content-center">
 								<div className="col-md-4 text-center">
-									<h1 className="pageTitle text-center py-2 px-3">Map</h1>
+									<h2 className="pageTitle text-center py-2 px-3">Map Tracker</h2>
 								</div>
 							</div>
 

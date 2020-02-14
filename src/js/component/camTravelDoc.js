@@ -47,13 +47,13 @@ export class camTravelDoc extends React.Component {
 
 	onChange = e => {
 		let str = e.target.options[e.target.selectedIndex].innerHTML;
-		let split = str.split(" ");
+		let split = str.split(":");
 
 		this.setState({
-			traveldoc: {
-				...this.state.traveldoc,
-				country_label: split[0],
-				country_value: split[1]
+			traveldocs: {
+				...this.state.traveldocs,
+				value: split[0],
+				label: split[1]
 			}
 		});
 	};
@@ -79,36 +79,36 @@ export class camTravelDoc extends React.Component {
 							isImageMirror={false}
 						/>
 					</div>
-					<div className="container d-flex justify-content-center">
-						<div className="row">
+					<div className="row d-flex justify-content-center">
+						<div className="col-sm-10 col-lg-8">
 							<select id="country" name="country" onChange={this.onChange} className="form-control">
-								<option value="Select Country">Select a Country</option>
+								<option value="Select Country">Select Country</option>
 								{countries.map(({ label, value }, index) => (
 									<option key={index} value={value}>
-										{label} {value}
+										{value}: {label}
 									</option>
 								))}
 							</select>
 						</div>
 					</div>
 					<div>
-						{this.state.traveldoc ? (
+						{this.state.traveldocs ? (
 							<div className="row d-sm-block d-md-flex mx-1 justify-content-between py-4 my-4 bg-white shadow">
 								<div className="col-sm-4 col-md-3 pageEntry ml-3 px-2 h-1 mt-4">
-									<h3 className="country-name align-middle">{this.state.traveldoc.country_label}</h3>
+									<h3 className="country-name align-middle">{this.state.traveldocs.label}</h3>
 								</div>
 								<div className="col-sm-4 col-md-4 text-center">
 									<img
 										className="stamp-prev navbar-brand mb-0 img-fluid"
 										onError={this.addDefaultSrc}
-										src={this.state.traveldoc.photo}
+										src={this.state.traveldocs.photo}
 									/>
 								</div>
 								<div className="col-sm-4 col-md-3 text-center">
 									<img
 										className="stamp-prev navbar-brand flag img-fluid"
 										onError={this.addDefaultSrc}
-										src={this.getImage(this.state.traveldoc.country_value)}
+										src={this.getImage(this.state.traveldocs.value)}
 									/>
 								</div>
 							</div>
@@ -122,7 +122,7 @@ export class camTravelDoc extends React.Component {
 										className="xlButton glass text-center py-2 px-3 m-auto"
 										type="text"
 										onMouseUp={() => {
-											if (actions.addDoc(this.state.traveldoc)) {
+											if (actions.addDoc(this.state.traveldocs)) {
 												this.props.history.push("/TravelDoc");
 											}
 										}}>

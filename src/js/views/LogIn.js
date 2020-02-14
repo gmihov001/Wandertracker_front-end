@@ -72,7 +72,7 @@ export class LogIn extends React.Component {
 							</button>
 							<span className="signup-cont">
 								<h4 className="signup-text">
-									Don&lquote;t have an account? We can fix that:
+									Don&lsquo;t have an account? We can fix that:
 									<Link to="/SignUp">
 										<button className="btn btn-default signup" href="#0">
 											Signup

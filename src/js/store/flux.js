@@ -8,12 +8,12 @@ const getState = ({ getStore, setStore }) => {
 				{
 					label: "France",
 					coordinates: ["46.0000", "2.0000"],
-					value: ""
+					value: "fr"
 				},
 				{
 					label: "Spain",
 					coordinates: ["40.0000", "-4.0000"],
-					value: ""
+					value: "sp"
 				}
 			],
 			traveldocs: [

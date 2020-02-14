@@ -12,7 +12,7 @@ export class CountryDropDown extends React.Component {
 			<div>
 				<div>
 					<select id="country" name="country" className="form-control">
-						<option value="Select Country">Select a Country</option>
+						<option value="Select Country">Select Country</option>
 						{countries.map(({ label, value }) => (
 							<option key={value} value={value}>
 								{label}

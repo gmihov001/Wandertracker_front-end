@@ -29,12 +29,12 @@ export class camStamps extends React.Component {
 
 	onChange = e => {
 		let str = e.target.options[e.target.selectedIndex].innerHTML;
-		let split = str.split(" ");
+		let split = str.split(":");
 
 		this.setState({
 			stamp: {
-				label: split[0],
-				value: split[1]
+				value: split[0],
+				label: split[1]
 			}
 		});
 	};
@@ -60,34 +60,34 @@ export class camStamps extends React.Component {
 							isImageMirror={false}
 						/>
 					</div>
-					<div className="container d-flex justify-content-center">
-						<div className="row">
+					<div className="row d-flex justify-content-center">
+						<div className="col-sm-10 col-lg-8">
 							<select id="country" name="country" onChange={this.onChange} className="form-control">
 								<option value="Select Country">Select a Country</option>
 								{countries.map(({ label, value }, index) => (
 									<option key={index} value={value}>
-										{label} {value}
+										{value}: {label}
 									</option>
 								))}
 							</select>
 						</div>
 					</div>
-					<div>
+					<div className="row">
 						{this.state.stamp ? (
-							<div className="row d-sm-block d-md-flex mx-1 justify-content-between py-4 my-4 bg-white shadow">
+							<div className="col-12 d-sm-block d-md-flex mx-1 justify-content-between py-4 my-4 bg-white shadow">
 								<div className="col-sm-4 col-md-3 pageEntry ml-3 px-2 mt-4">
 									<h3 className="country-name align-middle">{this.state.stamp.label}</h3>
 								</div>
-								<div className="col-sm-4 col-md-4 text-center">
+								<div className="col-sm-4 text-center">
 									<img
-										className="stamp-prev navbar-brand mb-0 h-1 img-fluid"
+										className="stamp-prev img-thumbnail navbar-brand mb-0 h-1"
 										onError={this.addDefaultSrc}
 										src={this.state.stamp.photo}
 									/>
 								</div>
 								<div className="col-sm-4 col-md-3">
 									<img
-										className="stamp-prev navbar-brand flag mr-5 text-center"
+										className="stamp-prev img-thumbnail navbar-brand flag mr-5 text-center"
 										onError={this.addDefaultSrc}
 										src={this.getImage(this.state.stamp.value)}
 									/>

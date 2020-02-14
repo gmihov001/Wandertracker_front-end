@@ -44,9 +44,9 @@ export class LogIn extends React.Component {
 				<Link to="/">
 					<img className="logo-navbar navbar-brand mb-0 h1" src={wtLogo} />
 				</Link>
-				<div className="container main rounded shadow p-3">
+				<div className="container main rounded shadow-lg p-5 my-5">
 					<form className="form-fields row" onSubmit={this.handleSubmit}>
-						<div className="col-md-4 col-md-offset-3 form">
+						<div className="col-md-4 col-lg-8 col-md-offset-3 form">
 							<h2>Login</h2>
 							<input
 								type="email"
@@ -72,7 +72,7 @@ export class LogIn extends React.Component {
 							</button>
 							<span className="signup-cont">
 								<h4 className="signup-text">
-									Dont have an account? We can fix that!
+									Don&lquote;t have an account? We can fix that:
 									<Link to="/SignUp">
 										<button className="btn btn-default signup" href="#0">
 											Signup

@@ -9,7 +9,7 @@ import UserIcon from "../../img/user-03.png";
 
 export const Navbar2 = () => {
 	return (
-		<nav className="navbar2 navbar navbar-expand-lg navbar-light bg-white d-flex justify-content-center">
+		<nav className="row navbar navbar-expand-lg navbar-light bg-white p-2 d-flex justify-content-center">
 			<Link to="/HomePage">
 				<img className="logo-navbar navbar-brand mb-0 h1" src={wtLogo} />
 			</Link>
@@ -23,15 +23,15 @@ export const Navbar2 = () => {
 				aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
 			</button>
-			<div className="collapse navbar-collapse" id="navbarSupportedContent">
-				<section className="d-flex justify-content-between s2 navbar-nav mr-0 text-center">
-					<div className="p-1">
+			<div className="col-md-8 collapse navbar-collapse" id="navbarSupportedContent">
+				<section className="col-md-5 navbar-nav flex-row ml-md-auto d-md-flex justify-content-md-between s2">
+					<div className="nav-item p-1">
 						<Link to="/Stamps">
 							<img className="iconbtn icons-navbar mb-0 h1" title="Go to Stamps" src={StampsIcon} />
 						</Link>
 					</div>
 
-					<div className="p-1">
+					<div className="nav-item p-1">
 						<Link to="/TravelDoc">
 							<img
 								className="iconbtn icons-navbar mb-0 h1"
@@ -41,19 +41,19 @@ export const Navbar2 = () => {
 						</Link>
 					</div>
 
-					<div className="p-1">
+					<div className="nav-item p-1">
 						<Link to="/Map">
 							<img className="iconbtn icons-navbar mb-0 h1" title="Go To Maps" src={MapIcon} />
 						</Link>
 					</div>
 
-					<div className="p-1">
+					<div className="nav-item p-1">
 						<Link to="/TripPlanner">
 							<img className="iconbtn icons-navbar mb-0 h1 " title="Go To Travel Planner" src={CalIcon} />
 						</Link>
 					</div>
 
-					<div className="p-1">
+					<div className="nav-item p-1">
 						<Link to="/HomePage">
 							<img className="iconbtn icons-navbar mb-0 h1" title="Go To Profile" src={UserIcon} />
 						</Link>

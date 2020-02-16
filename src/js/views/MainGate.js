@@ -11,7 +11,7 @@ export const MainGate = () => (
 		<Navbar />
 		<div className="container">
 			<div className="row">
-				<div className="map-landing img-fluid mt-3 mb-n3">
+				<div className="col-12 map-landing img-fluid mt-3 mb-n3">
 					<img id="worldMap" src={Map_Landing} />
 				</div>
 				<div className="main-landing text-white mx-auto shadow mx-5 mt-0">

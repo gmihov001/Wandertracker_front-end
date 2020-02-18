@@ -9,7 +9,7 @@ import UserIcon from "../../img/user-03.png";
 
 export const Navbar2 = () => {
 	return (
-		<nav className="row navbar navbar-expand-lg navbar-light bg-white p-2 d-flex justify-content-center">
+		<nav className="row navbar navbar-expand-lg navbar-light bg-white w-98 mx-auto px-2 py-2 d-flex justify-content-center">
 			<Link to="/HomePage">
 				<img className="logo-navbar navbar-brand mb-0 h1" src={wtLogo} />
 			</Link>

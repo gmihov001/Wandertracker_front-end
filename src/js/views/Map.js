@@ -40,10 +40,7 @@ export class Map extends React.Component {
 									<h2 className="pageTitle text-center py-2 px-3">Map Tracker</h2>
 								</div>
 							</div>
-
 							<SimpleMap markers={store.countries} />
-						</div>
-						<div className="container">
 							<div className="row my-5 d-flex justify-content-center">
 								<div className="col-md-4 justify-content-center">
 									<select
@@ -60,18 +57,16 @@ export class Map extends React.Component {
 									</select>
 								</div>
 							</div>
-							<div className="container ">
-								<div className="row my-5 d-flex justify-content-center">
-									<div className="col-md-4 justify-content-center">
-										<h2
-											className="xlButton glass text-center py-2 px-3 m-auto"
-											type="text"
-											onClick={() => {
-												actions.addCountry(this.state.country);
-											}}>
-											Save
-										</h2>
-									</div>
+							<div className="row my-5 d-flex justify-content-center">
+								<div className="col-md-4 justify-content-center">
+									<h2
+										className="xlButton glass text-center py-2 px-3 m-auto"
+										type="text"
+										onClick={() => {
+											actions.addCountry(this.state.country);
+										}}>
+										Save
+									</h2>
 								</div>
 							</div>
 						</div>

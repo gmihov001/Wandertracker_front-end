@@ -41,7 +41,7 @@ export class Map extends React.Component {
 								</div>
 							</div>
 							<SimpleMap markers={store.countries} />
-							<div className="row my-5 d-flex justify-content-center">
+							<div className="row mt-0 d-flex justify-content-center">
 								<div className="col-md-4 justify-content-center">
 									<select
 										onChange={this.onChange}

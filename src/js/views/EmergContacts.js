@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import { Navbar2 } from "../component/Navbar2";
 

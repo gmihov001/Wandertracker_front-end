@@ -15,17 +15,13 @@
 		"deploy": "node deploy-to-github.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "George Mihov",
+		"url": "https://github.com/gmihov001"
 	},
 	"contributors": [
 		{
-			"name": "Alejandro Sanchez",
-			"url": "http://alesanchezr.com/"
-		},
-		{
-			"name": "Ignacio Cordoba",
-			"url": "http://github.com/nachovz"
+			"name": "Fernando Funez",
+			"url": "https://github.com/ferfunes"
 		}
 	],
 	"license": "ISC",

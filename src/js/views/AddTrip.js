@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar2 } from "../component/Navbar2";
-import wtLogo from "../../img/wanderTrackerLogo.png";
 import { Context } from "../store/appContext.js";
 import PropTypes from "prop-types";
 

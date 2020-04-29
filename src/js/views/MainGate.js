@@ -1,55 +1,67 @@
 import React from "react";
 import { Navbar } from "../component/navbar";
-import { Link } from "react-router-dom";
 import Map_Landing from "../../img/Map_Landing.png";
 import SaveIcon from "../../img/Save.png";
 import CalIcon from "../../img/Calendar.png";
 import DocIcon from "../../img/Documents.png";
+import PropTypes from "prop-types";
 
-export const MainGate = () => (
-	<div className="wrapper bg-white">
-		<Navbar />
-		<div className="container">
-			<div className="row">
-				<div className="col-12 map-landing img-fluid mt-3 mb-n3">
-					<img id="worldMap" src={Map_Landing} />
-				</div>
-				<div className="main-landing text-white mx-auto shadow mx-5 mt-0">
-					<h2 className="text-center p-2 font-weight-light">Plan Travel | Save Memories</h2>
-				</div>
+export class MainGate extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 
-				<div className="d-flex justify-content-between m-1 text-secondary mx-auto mb-5">
-					<div className="row justify-content-center mx-auto">
-						<span className="icon m-2 p-4">
-							<center>
-								<img src={CalIcon} className="icon-main m-2 " />
-								<h4>Plan</h4>
-								<br />
-								Plan and organize your trips, <br />
-								from initial ideas to final itinerary
-							</center>
-						</span>
-						<span className="icon m-2 p-4">
-							<center>
-								<img src={DocIcon} className="icon-main m-2 " />
-								<h4>Save</h4>
-								<br />
-								Scan and store all your travel documents. <br /> Have quick access in the event of an
-								emergency.
-							</center>
-						</span>
-						<span className="icon m-2 p-4">
-							<center>
-								<img src={SaveIcon} className="icon-main m-2 " />
-								<h4>Keep</h4>
-								<br />
-								Save and share map locations, <br />
-								passport stamps and other memories
-							</center>
-						</span>
+	render() {
+		return (
+			<div className="wrapper bg-white">
+				<Navbar />
+				<div className="container">
+					<div className="row">
+						<div className="col-12 map-landing img-fluid mt-3 mb-n3">
+							<img id="worldMap" src={Map_Landing} />
+						</div>
+						<div className="main-landing text-white mx-auto shadow mx-5 mt-0">
+							<h2 className="text-center p-2 font-weight-light">Plan Travel | Save Memories</h2>
+						</div>
+						<br />
+						<div className="d-flex justify-content-between m-1 text-secondary mx-auto mb-5">
+							<div className="row justify-content-center mx-auto">
+								<span className="icon m-2 p-4">
+									<center>
+										<img src={CalIcon} className="icon-main m-2 " />
+										<h4>Plan</h4>
+										<br />
+										Plan and organize your trips, <br />
+										from initial ideas to final itinerary
+									</center>
+								</span>
+								<span className="icon m-2 p-4">
+									<center>
+										<img src={DocIcon} className="icon-main m-2 " />
+										<h4>Save</h4>
+										<br />
+										Scan and store all your travel documents. <br /> Have quick access in the event
+										of an emergency.
+									</center>
+								</span>
+								<span className="icon m-2 p-4">
+									<center>
+										<img src={SaveIcon} className="icon-main m-2 " />
+										<h4>Keep</h4>
+										<br />
+										Save and share map locations, <br />
+										passport stamps and other memories
+									</center>
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-);
+		);
+	}
+}
+
+MainGate.propTypes = {
+	user: PropTypes.string
+};

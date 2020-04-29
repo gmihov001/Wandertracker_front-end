@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import firebase from "./firebase";
+import Router from "@reach/router";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { MainGate } from "./views/MainGate";
 import { SignUp } from "./views/SignUp";
@@ -17,34 +19,68 @@ import { camStamps } from "./component/camStamps";
 import injectContext from "./store/appContext.js";
 import { Footer } from "./component/footer";
 
-export const Layout = () => {
-	const basename = process.env.BASENAME || "";
+export class Layout extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			user: null,
+			displayName: "",
+			userID: null
+		};
+	}
 
-	return (
-		<div className="d-flex flex-column h-100">
-			<BrowserRouter>
-				<ScrollToTop>
-					<Switch>
-						<Route exact path="/" component={MainGate} />
-						<Route path="/LogIn" component={LogIn} />
-						<Route path="/SignUp" component={SignUp} />
-						<Route path="/HomePage" component={HomePage} />
-						<Route path="/Stamps" component={Stamps} />
-						<Route path="/TravelDoc" component={TravelDoc} />
-						<Route path="/Map" component={Map} />
-						<Route path="/TripPlanner" component={TripPlanner} />
-						<Route path="/AddTrip" component={AddTrip} />
-						<Route path="/TripDetails/:id" component={TripDetails} />
-						<Route path="/EmergContacts" component={EmergContacts} />
-						<Route path="/camTravelDoc" component={camTravelDoc} />
-						<Route path="/camStamps" component={camStamps} />
-						<Route render={() => <h1>Not found!</h1>} />
-					</Switch>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
-	);
-};
+	componentDidMount() {
+		firebase.auth().onAuthStateChanged(FBUser => {
+			if (FBUser) {
+				this.setState({
+					user: FBUser,
+					displayName: FBUser.displayName,
+					userID: FBUser.uid
+				});
+			} else {
+				this.setState({
+					user: null,
+					displayName: null,
+					userID: null
+				});
+			}
+		});
+	}
+
+	render() {
+		const { userID, user } = this.state;
+		console.log("User: ");
+		console.log(user);
+
+		return (
+			<div className="d-flex flex-column h-100">
+				<BrowserRouter>
+					<ScrollToTop>
+						<Switch>
+							<Route exact path="/" component={MainGate} user={user} />
+							<Route path="/LogIn" component={LogIn} />
+							<Route path="/SignUp" component={SignUp} />
+							{userID && <Route path="/HomePage" component={HomePage} />}
+							{userID && <Route path="/Stamps" component={Stamps} />}
+							{userID && <Route path="/TravelDoc" component={TravelDoc} />}
+							{userID && <Route path="/Map" component={Map} />}
+							{userID && <Route path="/TripPlanner" component={TripPlanner} />}
+							{userID && <Route path="/AddTrip" component={AddTrip} />}
+							{userID && <Route path="/TripDetails/:id" component={TripDetails} />}
+							{userID && <Route path="/EmergContacts" component={EmergContacts} />}
+							{userID && <Route path="/camTravelDoc" component={camTravelDoc} />}
+							{userID && <Route path="/camStamps" component={camStamps} />}
+							{userID && <Route render={() => <h1>Not found!</h1>} />}
+						</Switch>
+						<Footer />
+					</ScrollToTop>
+				</BrowserRouter>
+			</div>
+		);
+	}
+}
 
 export default injectContext(Layout);
+/*
+
+*/

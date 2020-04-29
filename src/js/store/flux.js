@@ -1,6 +1,15 @@
+import React, { useState, useEffect } from "react";
+import firebase from "../firebase";
+import { Redirect } from "react-router-dom";
+
 const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
+			user: null,
+			displayName: null,
+			userID: null,
+			loggedIn: false,
+			loggedOut: false,
 			users: [],
 			passport_number: "23456789",
 			passport_expiry: "12.10.2029",
@@ -148,6 +157,21 @@ const getState = ({ getStore, setStore }) => {
 		actions: {
 			login: (usename, pw) => {},
 			// Authentication disabled for easy access to app
+
+			logOutUser: e => {
+				e.preventDefault();
+				setStore({
+					user: null,
+					displayName: null,
+					userID: null
+				});
+				firebase
+					.auth()
+					.signOut()
+					.then(() => {
+						<Redirect to="/MainGate" />;
+					});
+			},
 
 			editTrip: (tripID, object) => {
 				const store = getStore();

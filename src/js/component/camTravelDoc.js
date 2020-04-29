@@ -1,6 +1,6 @@
 import React from "react";
 import Camera from "react-html5-camera-photo";
-//import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Navbar2 } from "./Navbar2";
 //import passport from "../../img/passport.jpg";
 import countries from "../constants/countries";
@@ -12,17 +12,33 @@ import PropTypes from "prop-types";
 import firebase from "../firebase";
 
 export class camTravelDoc extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			traveldoc: {
 				photo: "",
-				country_label: "",
-				country_value: "",
+				label: "",
+				value: "",
 				user_id: 1
 			}
 		};
 	}
+
+	addMeeting = () => {};
+
+	handleSubmit = (e, userID) => {
+		e.preventDefault();
+
+		const ref = firebase.database().ref(`Travel Documents`);
+		ref.push({
+			photo: this.state.traveldoc.photo,
+			label: this.state.traveldoc.label,
+			value: this.state.traveldoc.value,
+			user_id: this.state.traveldoc.user_id
+		});
+
+		this.setState({ traveldoc: {} });
+	};
 
 	onTakePhoto = photo => {
 		//const newTraveldoc = Object.assign(this.state.traveldoc, photo);
@@ -50,8 +66,8 @@ export class camTravelDoc extends React.Component {
 		let split = str.split(":");
 
 		this.setState({
-			traveldocs: {
-				...this.state.traveldocs,
+			traveldoc: {
+				...this.state.traveldoc,
 				value: split[0],
 				label: split[1]
 			}
@@ -67,7 +83,6 @@ export class camTravelDoc extends React.Component {
 	};
 
 	render() {
-		console.log("Typeof: " + typeof this.state.traveldoc.photo);
 		return (
 			<div className="wrapper">
 				<Navbar2 />
@@ -92,38 +107,41 @@ export class camTravelDoc extends React.Component {
 						</div>
 					</div>
 					<div>
-						{this.state.traveldocs ? (
+						{this.state.traveldoc ? (
 							<div className="row d-sm-block d-md-flex mx-1 justify-content-between py-4 my-4 bg-white shadow">
 								<div className="col-sm-4 col-md-3 pageEntry ml-3 px-2 h-1 mt-4">
-									<h3 className="country-name align-middle">{this.state.traveldocs.label}</h3>
+									<h3 className="country-name align-middle">{this.state.traveldoc.label}</h3>
 								</div>
 								<div className="col-sm-4 col-md-4 text-center">
 									<img
 										className="stamp-prev navbar-brand mb-0 img-fluid"
 										onError={this.addDefaultSrc}
-										src={this.state.traveldocs.photo}
+										src={this.state.traveldoc.photo}
 									/>
 								</div>
 								<div className="col-sm-4 col-md-3 text-center">
 									<img
 										className="stamp-prev navbar-brand flag img-fluid"
 										onError={this.addDefaultSrc}
-										src={this.getImage(this.state.traveldocs.value)}
+										src={this.getImage(this.state.traveldoc.value)}
 									/>
 								</div>
 							</div>
 						) : null}
 					</div>
 					<Context.Consumer>
-						{({ actions }) => (
+						{({ store, actions }) => (
 							<div className="row my-5 d-flex justify-content-center">
 								<div className="col-md-4 justify-content-center">
 									<h2
 										className="xlButton glass text-center py-2 px-3 m-auto"
 										type="text"
+										onClick={e => {
+											this.handleSubmit(e, store.userID);
+										}}
 										onMouseUp={() => {
-											if (actions.addDoc(this.state.traveldocs)) {
-												this.props.history.push("/TravelDoc");
+											if (actions.addDoc(this.state.traveldoc)) {
+												return <Redirect to="/TravelDoc" />;
 											}
 										}}>
 										Save

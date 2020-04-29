@@ -9,8 +9,13 @@
     font-weight: 400;
 }
 
+.container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .row {
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 #module {
@@ -343,6 +348,10 @@ button:hover {
 
 .logo-navbar{
     height: 4rem;
+}
+
+.navbar-expand-lg {
+    box-shadow: 1px 2px 15px 1px darkgray;
 }
 
 /*------- Log IN ---------*/

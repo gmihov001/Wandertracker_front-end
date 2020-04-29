@@ -5,13 +5,37 @@ import Bulgaria5 from "../../img/Bulgaria-5.png";
 import CamIcon from "../../img/Image.png";
 import { Context } from "../store/appContext.js";
 import Lightbox from "react-image-lightbox";
+import firebase from "../firebase";
 
 export class TravelDoc extends React.Component {
 	constructor() {
 		super();
 		this.state = {
+			travelDocs: [],
+			howManyDocs: 0,
 			isOpen: false
 		};
+	}
+
+	componentDidMount() {
+		const travelDocsRef = firebase.database().ref("Travel Documents");
+		travelDocsRef.on("value", snapshot => {
+			let travelDocs = snapshot.val();
+			let travelDocList = [];
+			for (let item in travelDocs) {
+				travelDocList.push({
+					travelDocID: item,
+					photo: travelDocs[item].photo,
+					label: travelDocs[item].label,
+					value: travelDocs[item].value,
+					user_id: travelDocs[item].user_id
+				});
+			}
+			this.setState({
+				travelDocs: travelDocList,
+				howManyDocs: travelDocList.length
+			});
+		});
 	}
 
 	getImage = country => {
@@ -50,47 +74,48 @@ export class TravelDoc extends React.Component {
 							{({ store, actions }) => {
 								return (
 									<div className="col-12 d-block">
-										{store.traveldocs.map((item, index) => (
-											<div
-												key={index}
-												className="row #56 py-2 my-4 mx-1 d-sm-block d-md-flex justify-content-between bg-white shadow">
-												<div className="col-xs-4 col-sm-2 col-md-2 pageEntry ml-3 px-2 h-1 mt-4">
-													<h4 className="align-middle center-block">{item.label}</h4>
-												</div>
-												<div className="col-sm-3 #65 col-md-4 text-center">
-													<img
-														onClick={() => this.setState({ isOpen: true })}
-														className="img-prev navbar-brand mb-0 img-fluid"
-														onError={this.addDefaultSrc}
-														src={Bulgaria5}
-													/>
-
-													{isOpen && (
-														<Lightbox
-															mainSrc={Bulgaria5}
-															onCloseRequest={() => this.setState({ isOpen: false })}
+										{this.state.travelDocs.length &&
+											this.state.travelDocs.map(doc => (
+												<div
+													key={doc.travelDocID}
+													className="row #56 py-2 my-4 mx-1 d-sm-block d-md-flex justify-content-between bg-white shadow">
+													<div className="col-xs-4 col-sm-2 col-md-2 pageEntry ml-3 px-2 h-1 mt-4">
+														<h4 className="align-middle center-block">{doc.label}</h4>
+													</div>
+													<div className="col-sm-3 #65 col-md-4 text-center">
+														<img
+															onClick={() => this.setState({ isOpen: true })}
+															className="img-prev navbar-brand mb-0 img-fluid"
+															onError={this.addDefaultSrc}
+															src={doc.photo}
 														/>
-													)}
+
+														{isOpen && (
+															<Lightbox
+																mainSrc={doc.photo}
+																onCloseRequest={() => this.setState({ isOpen: false })}
+															/>
+														)}
+													</div>
+													<div className="col-sm-3 #80 col-md-2 text-center">
+														<img
+															className="stamp-prev navbar-brand flag img-fluid"
+															onError={this.addDefaultSrc}
+															src={this.getImage(doc.value)}
+														/>
+													</div>
+													<div className="col-sm-2 col-md-2 text-center">
+														<button
+															className="smallDelete my-4 px-2 mx-1"
+															type="button"
+															onClick={() => {
+																actions.removeDoc(doc.travelDocID);
+															}}>
+															Delete
+														</button>
+													</div>
 												</div>
-												<div className="col-sm-3 #80 col-md-2 text-center">
-													<img
-														className="stamp-prev navbar-brand flag img-fluid"
-														onError={this.addDefaultSrc}
-														src={this.getImage(item.value)}
-													/>
-												</div>
-												<div className="col-sm-2 col-md-2 text-center">
-													<button
-														className="smallDelete my-4 px-2 mx-1"
-														type="button"
-														onClick={() => {
-															actions.removeDoc(item.id);
-														}}>
-														Delete
-													</button>
-												</div>
-											</div>
-										))}
+											))}
 									</div>
 								);
 							}}

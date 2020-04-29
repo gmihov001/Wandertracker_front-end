@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
-import { Navbar2 } from "./Navbar2";
 import PropTypes from "prop-types";
 
 export class TripContacts extends React.Component {

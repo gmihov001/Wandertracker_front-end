@@ -9,10 +9,11 @@ import CameraImport, { FACING_MODES } from "react-html5-camera-photo";
 import { Context } from "../store/appContext.js";
 import PropTypes from "prop-types";
 //import { ImagePreview } from "./ImagePreview";
+import firebase from "../firebase";
 
 export class camStamps extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			stamp: {
 				photo: null,
@@ -22,9 +23,38 @@ export class camStamps extends React.Component {
 		};
 	}
 
+	handleSubmit = e => {
+		e.preventDefault();
+
+		const ref = firebase.database().ref(`Stamps`);
+		ref.push({
+			photo: this.state.stamp.photo,
+			label: this.state.stamp.label,
+			value: this.state.stamp.value
+		});
+
+		this.setState({ stamp: {} });
+	};
+
 	onTakePhoto = photo => {
 		//const newstamp = Object.assign(this.state.stamp, photo);
-		this.setState({ stamp: { ...this.state.stamp, photo: photo } });
+		//this.setState({ stamp: { ...this.state.stamp, photo: photo } });
+		const date = new Date();
+
+		const storageRef = firebase.storage().ref();
+		const uploader = storageRef
+			.child("/" + date.toString() + ".jpeg")
+			.putString(photo.split(",")[1], "base64", { contentType: "image/jpeg" });
+		uploader.on(
+			"state_changed",
+			snapshot => {},
+			error => console.log(error),
+			() => {
+				uploader.snapshot.ref.getDownloadURL().then(url => {
+					this.setState({ stamp: { ...this.state.stamp, photo: url } });
+				});
+			}
+		);
 	};
 
 	onChange = e => {
@@ -33,6 +63,7 @@ export class camStamps extends React.Component {
 
 		this.setState({
 			stamp: {
+				...this.state.stamp,
 				value: split[0],
 				label: split[1]
 			}
@@ -48,7 +79,6 @@ export class camStamps extends React.Component {
 	};
 
 	render() {
-		console.log("Typeof: " + typeof this.state.stamp.photo);
 		return (
 			<div className="wrapper">
 				<Navbar2 />
@@ -85,7 +115,7 @@ export class camStamps extends React.Component {
 										src={this.state.stamp.photo}
 									/>
 								</div>
-								<div className="col-sm-4 col-md-3">
+								<div className="col-sm-4 col-md-3 text-center">
 									<img
 										className="stamp-prev img-thumbnail navbar-brand flag mr-5 text-center"
 										onError={this.addDefaultSrc}
@@ -101,9 +131,9 @@ export class camStamps extends React.Component {
 								<div className="col-md-4 d-flex justify-content-center">
 									<h2
 										className="xlButton glass text-center py-2 px-3 m-auto"
-										type="text"
-										onMouseUp={() => {
-											if (actions.addStamp(this.state.stamp)) {
+										type="button"
+										onMouseUp={e => {
+											if (this.handleSubmit(e)) {
 												this.props.history.push("/Stamps");
 											}
 										}}>

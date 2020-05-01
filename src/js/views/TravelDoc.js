@@ -12,7 +12,7 @@ export class TravelDoc extends React.Component {
 		super();
 		this.state = {
 			travelDocs: [],
-			howManyDocs: 0,
+			photoIndex: 0,
 			isOpen: false
 		};
 	}
@@ -32,8 +32,7 @@ export class TravelDoc extends React.Component {
 				});
 			}
 			this.setState({
-				travelDocs: travelDocList,
-				howManyDocs: travelDocList.length
+				travelDocs: travelDocList
 			});
 		});
 	}
@@ -47,7 +46,7 @@ export class TravelDoc extends React.Component {
 	};
 
 	render() {
-		const { isOpen } = this.state;
+		const { isOpen, photoIndex, travelDocs } = this.state;
 		return (
 			<div className="wrapper">
 				<Navbar2 />
@@ -71,31 +70,26 @@ export class TravelDoc extends React.Component {
 
 					<div className="row #48 my-5 d-flex justify-content-center">
 						<Context.Consumer>
-							{({ store, actions }) => {
+							{({ actions }) => {
 								return (
 									<div className="col-12 d-block">
-										{this.state.travelDocs.length &&
-											this.state.travelDocs.map(doc => (
+										{travelDocs.length &&
+											travelDocs.map((doc, index) => (
 												<div
-													key={doc.travelDocID}
+													key={index}
 													className="row #56 py-2 my-4 mx-1 d-sm-block d-md-flex justify-content-between bg-white shadow">
 													<div className="col-xs-4 col-sm-2 col-md-2 pageEntry ml-3 px-2 h-1 mt-4">
 														<h4 className="align-middle center-block">{doc.label}</h4>
 													</div>
 													<div className="col-sm-3 #65 col-md-4 text-center">
 														<img
-															onClick={() => this.setState({ isOpen: true })}
+															onClick={() =>
+																this.setState({ isOpen: true, photoIndex: index })
+															}
 															className="img-prev navbar-brand mb-0 img-fluid"
 															onError={this.addDefaultSrc}
 															src={doc.photo}
 														/>
-
-														{isOpen && (
-															<Lightbox
-																mainSrc={doc.photo}
-																onCloseRequest={() => this.setState({ isOpen: false })}
-															/>
-														)}
 													</div>
 													<div className="col-sm-3 #80 col-md-2 text-center">
 														<img
@@ -116,6 +110,13 @@ export class TravelDoc extends React.Component {
 													</div>
 												</div>
 											))}
+										{isOpen && (
+											<Lightbox
+												mainSrc={travelDocs[photoIndex].photo}
+												imageCaption={`Document from: ${travelDocs[photoIndex].label}`}
+												onCloseRequest={() => this.setState({ isOpen: false })}
+											/>
+										)}
 									</div>
 								);
 							}}

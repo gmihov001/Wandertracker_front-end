@@ -24,17 +24,14 @@ export class camTravelDoc extends React.Component {
 		};
 	}
 
-	addMeeting = () => {};
-
-	handleSubmit = (e, userID) => {
+	handleSubmit = e => {
 		e.preventDefault();
 
 		const ref = firebase.database().ref(`Travel Documents`);
 		ref.push({
 			photo: this.state.traveldoc.photo,
 			label: this.state.traveldoc.label,
-			value: this.state.traveldoc.value,
-			user_id: this.state.traveldoc.user_id
+			value: this.state.traveldoc.value
 		});
 
 		this.setState({ traveldoc: {} });
@@ -130,14 +127,14 @@ export class camTravelDoc extends React.Component {
 						) : null}
 					</div>
 					<Context.Consumer>
-						{({ store, actions }) => (
+						{({ actions }) => (
 							<div className="row my-5 d-flex justify-content-center">
 								<div className="col-md-4 justify-content-center">
 									<h2
 										className="xlButton glass text-center py-2 px-3 m-auto"
-										type="text"
+										type="button"
 										onClick={e => {
-											this.handleSubmit(e, store.userID);
+											this.handleSubmit(e);
 										}}
 										onMouseUp={() => {
 											if (actions.addDoc(this.state.traveldoc)) {

@@ -61,7 +61,7 @@ export class Stamps extends React.Component {
 						<div className="col d-flex justify-content-center mb-2">
 							<Link to="/camStamps">
 								<img
-									className="take-pic navbar-brand mb-0 h1"
+									className="take-pic navbar-brand mb-0 mr-0 h1"
 									title="Take a picture of your stamp"
 									src={CamIcon}
 								/>

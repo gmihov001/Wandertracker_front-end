@@ -8,6 +8,7 @@ export class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			passportInfoId: null,
 			passportNum: "",
 			passportExp: "",
 			value: ""
@@ -18,11 +19,15 @@ export class HomePage extends React.Component {
 		const passportRef = firebase.database().ref("Passport Info");
 		passportRef.on("value", snapshot => {
 			let passportInfo = snapshot.val();
-			if (passportInfo !== null) {
-				this.setState({
-					passportNum: passportInfo.passportNum,
-					passportExp: passportInfo.passportExp
-				});
+			console.log(passportInfo);
+			for (let item in passportInfo) {
+				if (item !== null) {
+					this.setState({
+						passportInfoId: item,
+						passportNum: passportInfo[item].passportNum,
+						passportExp: passportInfo[item].passportExp
+					});
+				}
 			}
 		});
 	}
@@ -35,13 +40,14 @@ export class HomePage extends React.Component {
 		}
 	}
 
-	handleSubmit = e => {
-		e.preventDefault();
-
+	handleSubmit = () => {
+		let passportInfoId = this.state.passportInfoId;
 		const ref = firebase.database().ref(`Passport Info`);
 		ref.push({
-			passportNum: this.state.passportNum,
-			passportExp: this.state.passportExp
+			[passportInfoId]: {
+				passportNum: this.state.passportNum,
+				passportExp: this.state.passportExp
+			}
 		});
 	};
 
@@ -50,7 +56,7 @@ export class HomePage extends React.Component {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
-	logOutRedirect = e => {
+	logOutRedirect = () => {
 		<Redirect to="/" />;
 	};
 
@@ -85,7 +91,7 @@ export class HomePage extends React.Component {
 														<input
 															type="text"
 															className="form-control"
-															value={this.state.passport_number}
+															value={this.state.passportNum}
 															name="passportNum"
 															id="passportNum"
 															placeholder="Enter passport number"
@@ -104,7 +110,7 @@ export class HomePage extends React.Component {
 														<input
 															type="text"
 															className="form-control"
-															value={this.state.passport_expiry}
+															value={this.state.passportExp}
 															name="passportExp"
 															id="passportExp"
 															placeholder="Enter passport expiry"

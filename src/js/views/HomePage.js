@@ -42,12 +42,10 @@ export class HomePage extends React.Component {
 
 	handleSubmit = () => {
 		let passportInfoId = this.state.passportInfoId;
-		const ref = firebase.database().ref(`Passport Info`);
+		const ref = firebase.database().ref(`Passport Info/${passportInfoId}`);
 		ref.push({
-			[passportInfoId]: {
-				passportNum: this.state.passportNum,
-				passportExp: this.state.passportExp
-			}
+			passportNum: this.state.passportNum,
+			passportExp: this.state.passportExp
 		});
 	};
 

@@ -17,7 +17,8 @@ export class HomePage extends React.Component {
         if (confirm('Changes are saved, but not published yet. Do that now?')) { 
             // publish and go away from a specific page 
         } else { 
-            // do nothing and go away from a specific page } 
+            // do nothing and go away from a specific page 
+        } 
     }
 
 	handleChange = event => {

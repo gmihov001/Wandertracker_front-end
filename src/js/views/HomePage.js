@@ -7,13 +7,15 @@ export class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			passportNum: "",
+			passportExp: "",
 			value: ""
 		};
 	}
 
 	handleChange = event => {
 		event.preventDefault();
-		this.setState({ value: event.target.value });
+		this.setState({ [event.target.name]: event.target.value });
 	};
 
 	logOutRedirect = e => {
@@ -51,10 +53,10 @@ export class HomePage extends React.Component {
 														<input
 															type="text"
 															className="form-control"
-															//value={this.state.value}
+															value={this.state.passport_number}
 															name="passportNum"
 															id="passportNum"
-															placeholder={store.passport_number}
+															placeholder="Enter passport number"
 															onChange={this.handleChange}
 														/>
 													</div>
@@ -70,10 +72,10 @@ export class HomePage extends React.Component {
 														<input
 															type="text"
 															className="form-control"
-															//value="12.10.2029"
+															value={this.state.passport_expiry}
 															name="passportExp"
 															id="passportExp"
-															placeholder={store.passport_expiry}
+															placeholder="Enter passport expiry"
 															onChange={this.handleChange}
 														/>
 													</div>

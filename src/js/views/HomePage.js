@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Navbar2 } from "../component/Navbar2";
 import { Context } from "../store/appContext.js";
+import firebase from "../firebase";
 
 export class HomePage extends React.Component {
 	constructor(props) {
@@ -11,15 +12,38 @@ export class HomePage extends React.Component {
 			passportExp: "",
 			value: ""
 		};
-    }
-    
-    componentWillUnmount() { 
-        if (confirm('Changes are saved, but not published yet. Do that now?')) { 
-            // publish and go away from a specific page 
-        } else { 
-            // do nothing and go away from a specific page 
-        } 
-    }
+	}
+
+	componentDidMount() {
+		const passportRef = firebase.database().ref("Passport Info");
+		passportRef.on("value", snapshot => {
+			let passportInfo = snapshot.val();
+			if (passportInfo !== null) {
+				this.setState({
+					passportNum: passportInfo.passportNum,
+					passportExp: passportInfo.passportExp
+				});
+			}
+		});
+	}
+
+	componentWillUnmount() {
+		if (confirm("Do you want to save the new passport details?")) {
+			this.handleSubmit();
+		} else {
+			// do nothing and go away from a specific page
+		}
+	}
+
+	handleSubmit = e => {
+		e.preventDefault();
+
+		const ref = firebase.database().ref(`Passport Info`);
+		ref.push({
+			passportNum: this.state.passportNum,
+			passportExp: this.state.passportExp
+		});
+	};
 
 	handleChange = event => {
 		event.preventDefault();

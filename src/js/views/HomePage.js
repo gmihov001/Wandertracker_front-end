@@ -10,8 +10,7 @@ export class HomePage extends React.Component {
 		this.state = {
 			passportInfoId: "",
 			passportNum: "",
-			passportExp: "",
-			value: ""
+			passportExp: ""
 		};
 	}
 
@@ -33,28 +32,34 @@ export class HomePage extends React.Component {
 	}
 
 	componentWillUnmount() {
-		if (confirm("Do you want to save the new passport details?")) {
-			this.handleSubmit;
+		if (this.state.passportInfoId.length) {
+			if (confirm("Do you want to save new passport details?")) {
+				this.handleChangePassport();
+			}
+		} else {
+			this.handleSubmit();
 		}
 	}
 
 	handleSubmit = () => {
 		let passportInfoId = this.state.passportInfoId;
-		if (passportInfoId.length < 2) {
-			const ref = firebase.database().ref(`Passport Info`);
-			return ref.push({
+		const ref = firebase.database().ref(`Passport Info/${passportInfoId}`);
+
+		ref.push({
+			passportNum: this.state.passportNum,
+			passportExp: this.state.passportExp
+		});
+	};
+
+	handleChangePassport = () => {
+		let passportInfoId = this.state.passportInfoId;
+		firebase
+			.database()
+			.ref(`Passport Info/${passportInfoId}`)
+			.set({
 				passportNum: this.state.passportNum,
 				passportExp: this.state.passportExp
 			});
-		} else {
-			return firebase
-				.database()
-				.ref(`Passport Info/${passportInfoId}`)
-				.set({
-					passportNum: this.state.passportNum,
-					passportExp: this.state.passportExp
-				});
-		}
 	};
 
 	handleChange = event => {

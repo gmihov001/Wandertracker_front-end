@@ -42,7 +42,7 @@ export class AddTrip extends React.Component {
 							<div className="col-md-4 d-block">
 								<h1 className="pageTitle text-center py-2 px-3">Add New Trip</h1>
 								<h4 className="text-secondary text-center rounded shadow">
-									{this.state.trip.name} {this.state.trip.month} {this.state.trip.year}
+									{this.state.trip.name} {this.state.trip.year}
 								</h4>
 							</div>
 						</div>

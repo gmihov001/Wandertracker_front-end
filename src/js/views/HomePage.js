@@ -40,14 +40,19 @@ export class HomePage extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-
-		let passportInfoId = this.state.passportInfoId;
-		const ref = firebase.database().ref(`Passport Info/${passportInfoId}`);
-
-		ref.push({
-			passportNum: this.state.passportNum,
-			passportExp: this.state.passportExp
-		});
+        let passportInfoId = this.state.passportInfoId;
+        if (passportInfoId.length < 2) {
+            const ref = firebase.database().ref(`Passport Info`);
+            ref.push({
+                passportNum: this.state.passportNum,
+                passportExp: this.state.passportExp
+            });
+        } else {
+            firebase.database().ref(`Passport Info/${passportInfoId}`).set({
+                passportNum: this.state.passportNum,
+                passportExp: this.state.passportExp
+            });
+        }
 	};
 
 	handleChange = event => {

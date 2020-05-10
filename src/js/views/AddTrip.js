@@ -1,18 +1,17 @@
 import React from "react";
 import { Navbar2 } from "../component/Navbar2";
-import { Context } from "../store/appContext.js";
 import PropTypes from "prop-types";
+import firebase from "../firebase";
 
 export class AddTrip extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			userInput: {},
 			trip: {
+				tripId: "",
 				name: "",
 				month: "",
 				year: "",
-				id: "",
 				contacts: [],
 				places: [],
 				itinerary: []
@@ -30,6 +29,21 @@ export class AddTrip extends React.Component {
 
 	handleYear = evt => {
 		this.setState({ trip: { ...this.state.trip, year: evt.target.value } });
+	};
+
+	handleSubmit = e => {
+		e.preventDefault();
+
+		const ref = firebase.database().ref(`Trips`);
+		ref.push({
+			name: this.state.trip.name,
+			month: this.state.trip.month,
+			year: this.state.trip.year,
+			contacts: [],
+			places: [],
+			itinerary: []
+		});
+		this.setState({ trip: {} });
 	};
 
 	render() {
@@ -50,8 +64,9 @@ export class AddTrip extends React.Component {
 							<div className="col d-flex justify-content-center mb-5">
 								<input
 									type="text"
+									id="name"
 									className="textfield col-md-6"
-									value={this.state.userInput.name}
+									value={this.state.trip.name}
 									name="name"
 									onChange={this.handleName}
 									placeholder="Destination..."
@@ -61,8 +76,9 @@ export class AddTrip extends React.Component {
 							<div className="col d-flex justify-content-center mb-5">
 								<input
 									type="text"
+									id="month"
 									className="textfield col-md-6"
-									value={this.state.userInput.month}
+									value={this.state.trip.month}
 									name="month"
 									onChange={this.handleMonth}
 									placeholder="Month of Travel..."
@@ -72,8 +88,9 @@ export class AddTrip extends React.Component {
 							<div className="col d-flex justify-content-center mb-5">
 								<input
 									type="text"
+									id="year"
 									className="textfield col-md-6"
-									value={this.state.userInput.year}
+									value={this.state.trip.year}
 									name="year"
 									onChange={this.handleYear}
 									placeholder="Year of Travel"
@@ -82,23 +99,13 @@ export class AddTrip extends React.Component {
 						</div>
 					</form>
 				</div>
-				<Context.Consumer>
-					{({ actions }) => (
-						<div className="row my-5 d-flex justify-content-center">
-							<div className="col-md-4 justify-content-center">
-								<h2
-									className="xlButton glass text-center py-2 px-3 m-auto"
-									onMouseUp={() => {
-										if (actions.addTrip(this.state.trip)) {
-											this.props.history.push("/TripPlanner");
-										}
-									}}>
-									Save
-								</h2>
-							</div>
-						</div>
-					)}
-				</Context.Consumer>
+				<div className="row my-5 d-flex justify-content-center">
+					<div className="col-md-4 justify-content-center">
+						<h2 className="xlButton glass text-center py-2 px-3 m-auto" onClick={this.handleSubmit}>
+							Save
+						</h2>
+					</div>
+				</div>
 			</div>
 		);
 	}

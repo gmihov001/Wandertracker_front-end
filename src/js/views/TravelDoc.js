@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar2 } from "../component/Navbar2";
-import Bulgaria5 from "../../img/Bulgaria-5.png";
 import CamIcon from "../../img/Image.png";
 import { Context } from "../store/appContext.js";
 import Lightbox from "react-image-lightbox";

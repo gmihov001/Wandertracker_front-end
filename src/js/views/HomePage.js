@@ -34,19 +34,17 @@ export class HomePage extends React.Component {
 
 	componentWillUnmount() {
 		if (confirm("Do you want to save the new passport details?")) {
-			this.handleSubmit();
-		} else {
-			// do nothing and go away from a specific page
+			() => this.handleSubmit(e);
 		}
 	}
 
 	handleSubmit = e => {
-        e.preventDefault();
+		e.preventDefault();
 
 		let passportInfoId = this.state.passportInfoId;
 		const ref = firebase.database().ref(`Passport Info/${passportInfoId}`);
-        
-        ref.push({
+
+		ref.push({
 			passportNum: this.state.passportNum,
 			passportExp: this.state.passportExp
 		});

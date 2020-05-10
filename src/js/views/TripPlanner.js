@@ -7,8 +7,40 @@ import { Context } from "../store/appContext.js";
 export class TripPlanner extends React.Component {
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            trips: {
+				tripID: "",
+				name: "",
+				month: "",
+				year: "",
+				contacts: [],
+				places: [],
+				itinerary: []
+			}
+        };
     }
+
+    componentDidMount() {
+		const tripsRef = firebase.database().ref("Trips");
+		tripsRef.on("value", snapshot => {
+			let trips = snapshot.val();
+			let tripList = [];
+			for (let item in trips) {
+				tripList.push({
+					tripID: item,
+					name: trips[item].name,
+					month: trips[item].month,
+					year: trips[item].year,
+                    contacts: trips[item].contacts,
+                    places: trips[item].places,
+                    itinerary: trips[item].itinerary
+				});
+			}
+			this.setState({
+				trips: tripList
+			});
+		});
+	}
     
     render(){
         return (

@@ -1,14 +1,11 @@
 import React from "react";
 import Camera from "react-html5-camera-photo";
-import { Link, Redirect } from "react-router-dom";
 import { Navbar2 } from "./Navbar2";
-//import passport from "../../img/passport.jpg";
 import countries from "../constants/countries";
 import "react-html5-camera-photo/build/css/index.css";
 import { FACING_MODES } from "react-html5-camera-photo";
 import { Context } from "../store/appContext.js";
 import PropTypes from "prop-types";
-//import { ImagePreview } from "./ImagePreview";
 import firebase from "../firebase";
 
 export class camTravelDoc extends React.Component {
@@ -126,27 +123,18 @@ export class camTravelDoc extends React.Component {
 							</div>
 						) : null}
 					</div>
-					<Context.Consumer>
-						{({ actions }) => (
-							<div className="row my-5 d-flex justify-content-center">
-								<div className="col-md-4 justify-content-center">
-									<h2
-										className="xlButton glass text-center py-2 px-3 m-auto"
-										type="button"
-										onClick={e => {
-											this.handleSubmit(e);
-										}}
-										onMouseUp={() => {
-											if (actions.addDoc(this.state.traveldoc)) {
-												return <Redirect to="/TravelDoc" />;
-											}
-										}}>
-										Save
-									</h2>
-								</div>
-							</div>
-						)}
-					</Context.Consumer>
+					<div className="row my-5 d-flex justify-content-center">
+						<div className="col-md-4 justify-content-center">
+							<h2
+								className="xlButton glass text-center py-2 px-3 m-auto"
+								type="button"
+								onClick={e => {
+									this.handleSubmit(e);
+								}}>
+								Save
+							</h2>
+						</div>
+					</div>
 				</div>
 			</div>
 		);

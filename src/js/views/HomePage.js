@@ -33,7 +33,7 @@ export class HomePage extends React.Component {
 
 	componentWillUnmount() {
 		if (this.state.passportInfoId.length) {
-			if (confirm("Do you want to save new passport details?")) {
+			if (confirm("Save passport details?")) {
 				this.handleChangePassport();
 			}
 		} else {

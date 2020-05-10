@@ -21,7 +21,7 @@ export class TravelDoc extends React.Component {
 		const travelDocsRef = firebase.database().ref("Travel Documents");
 		travelDocsRef.on("value", snapshot => {
 			let travelDocs = snapshot.val();
-			console.log(travelDocs);
+
 			let travelDocList = [];
 			for (let item in travelDocs) {
 				travelDocList.push({
